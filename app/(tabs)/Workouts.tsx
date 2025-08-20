@@ -1,10 +1,131 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity, Dimensions } from 'react-native';
+import React, { useState, useRef, useEffect } from 'react';
+import { WebView } from 'react-native-webview';
+import { VideoView, useVideoPlayer } from 'expo-video';
+import { useRouter } from 'expo-router';
+import { Video ,ResizeMode} from 'expo-av';
+
+import { StyleSheet, View,Modal, Text, ScrollView, Image, TouchableOpacity, Dimensions, Button } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
+
 const Workouts = () => {
+const [modalVisible, setModalVisible] = useState(false);
+const [modalVisible2, setModalVisible2] = useState(false);
+const [modalVisible3, setModalVisible3] = useState(false);
+const [modalVisible4, setModalVisible4] = useState(false);
+const [modalVisible5, setModalVisible5] = useState(false);
+const [modalVisible6, setModalVisible6] = useState(false);
+const [modalVisible7, setModalVisible7] = useState(false);
+  const video = useRef(null);
+  const videoSource = require('../../assets/images/pushups.mp4');
+   const videoSource2 = require('../../assets/images/skullcrushers.mp4');
+    const videoSource3 = require('../../assets/images/pushups.mp4');
+     const videoSource4 = require('../../assets/images/pushups.mp4');
+      const videoSource5 = require('../../assets/images/pushups.mp4');
+       const videoSource6 = require('../../assets/images/pushups.mp4');
+        const videoSource7 = require('../../assets/images/pushups.mp4');
+
+
+    const [playing, setPlaying] = useState(false);
+   
+ useEffect(() => {
+    if (modalVisible) {
+      video.current?.playAsync();
+    }
+  }, [modalVisible]);
+const videoRef = useRef(null);
+  const router = useRouter();
   const [visible, setVisible] = useState(false);
+  const [visible2, setVisible2] = useState(false);
+  const [visible3, setVisible3] = useState(false);
+  const [visible4, setVisible4] = useState(false);
+
+
+  const openModal = () => {
+  setModalVisible(true);
+  setPlaying(true);
+};
+  const openModal2 = () => {
+  setModalVisible2(true);
+  setPlaying(true);
+};
+
+  const openModal3 = () => {
+  setModalVisible3(true);
+  setPlaying(true);
+};
+
+  const openModal4 = () => {
+  setModalVisible4(true);
+  setPlaying(true);
+};
+
+  const openModal5 = () => {
+  setModalVisible5(true);
+  setPlaying(true);
+};
+
+  const openModal6 = () => {
+  setModalVisible6(true);
+  setPlaying(true);
+};
+  const openModal7 = () => {
+  setModalVisible7(true);
+  setPlaying(true);
+};
+
+
+
+   const closeModal = () => {
+    // Pause the video when closing modal
+   
+    setModalVisible(false);
+  };
+  
+   const closeModal2 = () => {
+    // Pause the video when closing modal
+   
+    setModalVisible2(false);
+  };
+   const closeModal3 = () => {
+    // Pause the video when closing modal
+   
+    setModalVisible3(false);
+  };
+
+   const closeModal4 = () => {
+    // Pause the video when closing modal
+   
+    setModalVisible4(false);
+  };
+
+   const closeModal5 = () => {
+    // Pause the video when closing modal
+   
+    setModalVisible5(false);
+  };
+
+   const closeModal6 = () => {
+    // Pause the video when closing modal
+   
+    setModalVisible6(false);
+  };
+  
+   const closeModal7 = () => {
+    // Pause the video when closing modal
+   
+    setModalVisible7(false);
+  };
+  const player = useVideoPlayer(
+    require('../../assets/images/pushups.mp4'),
+    (videoPlayer) => {
+      videoPlayer.loop = true;
+      videoPlayer.muted = true;
+      videoPlayer.play();
+    }
+  );
+ 
 
   return (
     <View style={styles.container}>
@@ -12,19 +133,141 @@ const Workouts = () => {
       <Text style={styles.p1}>Explore Workout Plans</Text>
       <TouchableOpacity style={styles.btnfilter}>
         <Image
-          source={require('../../assets/images/filter.png')} // adjust path if needed
+          source={require('../../assets/images/filter.png')}
           style={styles.iconfilter}
         />
       </TouchableOpacity>
+ {/* Modal with video */}
+      <Modal visible={modalVisible} animationType="slide" onRequestClose={closeModal} transparent={true}>
+        <View style={styles.modalContainer}>
+         <Video
+          ref={video}
+          style={styles.video}
+          source={videoSource} // ✅ Single constant
+          resizeMode={ResizeMode.COVER}
+          isLooping
+        />
+          <Button title="Close" onPress={closeModal} />
+        </View>
+      </Modal>
 
-      <ScrollView style={styles.scrollview}>
+        <Modal visible={modalVisible2} animationType="slide" onRequestClose={closeModal} transparent={true}>
+        <View style={styles.modalContainer}>
+          <Video
+        source={require('../../assets/images/skullcrushers.mp4')}
+        rate={1.0}
+        volume={1.0}
+        isMuted={false}
+        shouldPlay
+         resizeMode="contain" 
+        style={{ width: 300, height: 200 }}
+        useNativeControls
+      />
+          <Button title="Close" onPress={closeModal2} />
+        </View>
+      </Modal>
+       
+            <Modal visible={modalVisible3} animationType="slide" onRequestClose={closeModal} transparent={true}>
+        <View style={styles.modalContainer}>
+          <Video
+        source={require('../../assets/images/benchdip.mp4')}
+        rate={1.0}
+        volume={1.0}
+        isMuted={false}
+        shouldPlay
+         resizeMode="contain" 
+        style={{ width: 300, height: 200 }}
+        useNativeControls
+      />
+          <Button title="Close" onPress={closeModal3} />
+        </View>
+      </Modal>
+
+          <Modal visible={modalVisible4} animationType="slide" onRequestClose={closeModal} transparent={true}>
+        <View style={styles.modalContainer}>
+          <Video
+        source={require('../../assets/images/pseudo.mp4')}
+        rate={1.0}
+        volume={1.0}
+        isMuted={false}
+        shouldPlay
+         resizeMode="contain" 
+        style={{ width: 300, height: 200 }}
+        useNativeControls
+      />
+          <Button title="Close" onPress={closeModal4} />
+        </View>
+      </Modal>
+
+         <Modal visible={modalVisible5} animationType="slide" onRequestClose={closeModal} transparent={true}>
+        <View style={styles.modalContainer}>
+          <Video
+        source={require('../../assets/images/pseudpushups.mp4')}
+        rate={1.0}
+        volume={1.0}
+        isMuted={false}
+        shouldPlay
+         resizeMode="contain" 
+        style={{ width: 300, height: 200 }}
+        useNativeControls
+      />
+          <Button title="Close" onPress={closeModal5} />
+        </View>
+      </Modal>
+       
+
+          <Modal visible={modalVisible6} animationType="slide" onRequestClose={closeModal} transparent={true}>
+        <View style={styles.modalContainer}>
+          <Video
+        source={require('../../assets/images/face2.mp4')}
+        rate={1.0}
+        volume={1.0}
+        isMuted={false}
+        shouldPlay
+         resizeMode="contain" 
+        style={{ width: 300, height: 200 }}
+        useNativeControls
+      />
+          <Button title="Close" onPress={closeModal6} />
+        </View>
+      </Modal>
+       
+
+          <Modal visible={modalVisible7} animationType="slide" onRequestClose={closeModal} transparent={true}>
+        <View style={styles.modalContainer}>
+          <Video
+        source={require('../../assets/images/face4.mp4')}
+        rate={1.0}
+        volume={1.0}
+        isMuted={false}
+        shouldPlay
+         resizeMode="contain" 
+        style={{ width: 300, height: 200 }}
+        useNativeControls
+      />
+          <Button title="Close" onPress={closeModal7} />
+        </View>
+      </Modal>
+       
+       
+       
+       
+       
+      
+        
+      <ScrollView
+        style={styles.scrollview}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={true}
+      >
         <View style={styles.card1}>
           <Image
             source={require('../../assets/images/erik-mclean-1MiLJjXmPhA-unsplash.jpg')}
             style={styles.img1}
           />
           <Text style={styles.text1}>Arms Workout</Text>
-          <Text style={styles.text2}>15 mins</Text>
+          <Text style={styles.text2}>8 mins</Text>
+          <Text style={styles.text3}>8 Exercises</Text>
           <TouchableOpacity style={styles.btnstart} onPress={() => setVisible(true)}>
             <Text>Start workout</Text>
           </TouchableOpacity>
@@ -38,7 +281,7 @@ const Workouts = () => {
           />
           <Text style={styles.text1}>Chest Workout</Text>
           <Text style={styles.text2}>15 mins</Text>
-          <TouchableOpacity style={styles.btnstart}>
+          <TouchableOpacity style={styles.btnstart}  onPress={() => setVisible2(true)}>
             <Text>Start workout</Text>
           </TouchableOpacity>
         </View>
@@ -50,7 +293,7 @@ const Workouts = () => {
           />
           <Text style={styles.text1}>Arbs Workout</Text>
           <Text style={styles.text2}>15 mins</Text>
-          <TouchableOpacity style={styles.btnstart}>
+          <TouchableOpacity style={styles.btnstart} onPress={() => setVisible3(true)}>
             <Text>Start workout</Text>
           </TouchableOpacity>
         </View>
@@ -62,7 +305,7 @@ const Workouts = () => {
           />
           <Text style={styles.text1}>Legs Workout</Text>
           <Text style={styles.text2}>15 mins</Text>
-          <TouchableOpacity style={styles.btnstart}>
+          <TouchableOpacity style={styles.btnstart} onPress={() => setVisible4(true)}>
             <Text>Start workout</Text>
           </TouchableOpacity>
         </View>
@@ -72,19 +315,544 @@ const Workouts = () => {
         <View style={styles.fakeScreen}>
           <TouchableOpacity style={styles.btnback} onPress={() => setVisible(false)}>
             <Image
-              source={require('../../assets/images/arrow.png')} // adjust path if needed
+              source={require('../../assets/images/arrow.png')}
               style={styles.icon}
-                    />
+            />
           </TouchableOpacity>
           <Text style={styles.p3}>Arms Workout</Text>
 
-          <View style={styles.train1}></View>
-          <View style={styles.train1}></View>
-          <View style={styles.train1}></View>
-          <View style={styles.train1}></View>
-          <View style={styles.train1}></View>
-          <View style={styles.train1}></View>
-          
+          <ScrollView
+            style={{ flex: 1 }}
+            contentContainerStyle={{ paddingBottom: 20 }}
+            showsVerticalScrollIndicator={true}
+          >
+      
+  <TouchableOpacity onPress={openModal}>
+    <View style={styles.train1}>
+      <View style={styles.textCard}>
+        <Text style={styles.cardtitle}>Push ups</Text>
+        <Text style={styles.text}>9 exercises</Text>
+        <Text style={styles.text}>40 seconds</Text>
+      </View>
+
+      <Image
+        source={require('../../assets/images/Screenshot_20250812_190104_Files by Google.jpg')}
+        style={{ width: 180, height: 100 }}
+        resizeMode="cover"
+      />
+    </View>
+  </TouchableOpacity>
+
+
+
+ <TouchableOpacity onPress={openModal2}>
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups2</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190120_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+</TouchableOpacity>
+
+
+ <TouchableOpacity onPress={openModal3}>
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups3</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190134_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+</TouchableOpacity>
+
+ <TouchableOpacity onPress={openModal4}>
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups4</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190139_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+</TouchableOpacity>
+
+
+ <TouchableOpacity onPress={openModal5}>
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups5</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190147_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+</TouchableOpacity>
+
+ <TouchableOpacity onPress={openModal6}>
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups6</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190152_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+</TouchableOpacity>
+
+<TouchableOpacity onPress={openModal7}>
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups7</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190158_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+            </TouchableOpacity>
+          </ScrollView>
+
+          <TouchableOpacity
+            style={styles.btnstartt}
+            onPress={() => router.push('/ArmsWorkout')}  // corrigido para rota relativa
+          >
+            <Text
+              style={{
+                textAlign: 'center',
+                marginTop: 10,
+                fontSize: 26,
+                color: 'white',
+                fontWeight: 'bold',
+              }}
+            >
+              Start Workout
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )}
+
+        {visible2 && (
+        <View style={styles.fakeScreen}>
+          <TouchableOpacity style={styles.btnback} onPress={() => setVisible2(false)}>
+            <Image
+              source={require('../../assets/images/arrow.png')}
+              style={styles.icon}
+            />
+          </TouchableOpacity>
+          <Text style={styles.p3}>Chest Workout</Text>
+
+          <ScrollView
+            style={{ flex: 1 }}
+            contentContainerStyle={{ paddingBottom: 20 }}
+            showsVerticalScrollIndicator={true}
+          >
+       {!playing ? (
+  <TouchableOpacity onPress={openModal}>
+    <View style={styles.train1}>
+      <View style={styles.textCard}>
+        <Text style={styles.cardtitle}>Push ups</Text>
+        <Text style={styles.text}>9 exercises</Text>
+        <Text style={styles.text}>40 seconds</Text>
+      </View>
+
+      <Image
+        source={require('../../assets/images/Screenshot_20250812_190104_Files by Google.jpg')}
+        style={{ width: 180, height: 100 }}
+        resizeMode="cover"
+      />
+    </View>
+  </TouchableOpacity>
+) : null}
+
+
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190120_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190134_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190139_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190147_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190152_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190158_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+          </ScrollView>
+
+          <TouchableOpacity
+            style={styles.btnstartt}
+            onPress={() => router.push('/ArmsWorkout')}  // corrigido para rota relativa
+          >
+            <Text
+              style={{
+                textAlign: 'center',
+                marginTop: 10,
+                fontSize: 26,
+                color: 'white',
+                fontWeight: 'bold',
+              }}
+            >
+              Start Workout
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )}
+
+        {visible3 && (
+        <View style={styles.fakeScreen}>
+          <TouchableOpacity style={styles.btnback} onPress={() => setVisible3(false)}>
+            <Image
+              source={require('../../assets/images/arrow.png')}
+              style={styles.icon}
+            />
+          </TouchableOpacity>
+          <Text style={styles.p3}>Arbs Workout</Text>
+
+          <ScrollView
+            style={{ flex: 1 }}
+            contentContainerStyle={{ paddingBottom: 20 }}
+            showsVerticalScrollIndicator={true}
+          >
+       {!playing ? (
+  <TouchableOpacity onPress={openModal}>
+    <View style={styles.train1}>
+      <View style={styles.textCard}>
+        <Text style={styles.cardtitle}>Push ups</Text>
+        <Text style={styles.text}>9 exercises</Text>
+        <Text style={styles.text}>40 seconds</Text>
+      </View>
+
+      <Image
+        source={require('../../assets/images/Screenshot_20250812_190104_Files by Google.jpg')}
+        style={{ width: 180, height: 100 }}
+        resizeMode="cover"
+      />
+    </View>
+  </TouchableOpacity>
+) : null}
+
+
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190120_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190134_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190139_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190147_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190152_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190158_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+          </ScrollView>
+
+          <TouchableOpacity
+            style={styles.btnstartt}
+            onPress={() => router.push('/ArmsWorkout')}  // corrigido para rota relativa
+          >
+            <Text
+              style={{
+                textAlign: 'center',
+                marginTop: 10,
+                fontSize: 26,
+                color: 'white',
+                fontWeight: 'bold',
+              }}
+            >
+              Start Workout
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )}
+
+        {visible4 && (
+        <View style={styles.fakeScreen}>
+          <TouchableOpacity style={styles.btnback} onPress={() => setVisible4(false)}>
+            <Image
+              source={require('../../assets/images/arrow.png')}
+              style={styles.icon}
+            />
+          </TouchableOpacity>
+          <Text style={styles.p3}>Legs Workout</Text>
+
+          <ScrollView
+            style={{ flex: 1 }}
+            contentContainerStyle={{ paddingBottom: 20 }}
+            showsVerticalScrollIndicator={true}
+          >
+       {!playing ? (
+  <TouchableOpacity onPress={openModal}>
+    <View style={styles.train1}>
+      <View style={styles.textCard}>
+        <Text style={styles.cardtitle}>Push ups</Text>
+        <Text style={styles.text}>9 exercises</Text>
+        <Text style={styles.text}>40 seconds</Text>
+      </View>
+
+      <Image
+        source={require('../../assets/images/Screenshot_20250812_190104_Files by Google.jpg')}
+        style={{ width: 180, height: 100 }}
+        resizeMode="cover"
+      />
+    </View>
+  </TouchableOpacity>
+) : null}
+
+
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190120_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190134_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190139_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190147_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190152_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+
+            <View style={styles.train1}>
+              <View style={styles.textCard}>
+                <Text style={styles.cardtitle}>Push ups</Text>
+                <Text style={styles.text}>9 exercises</Text>
+                <Text style={styles.text}>40 seconds</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/images/Screenshot_20250812_190158_Files by Google.jpg')}
+                style={{ width: 180, height: 100 }}
+              />
+            </View>
+          </ScrollView>
+
+          <TouchableOpacity
+            style={styles.btnstartt}
+            onPress={() => router.push('/ArmsWorkout')}  // corrigido para rota relativa
+          >
+            <Text
+              style={{
+                textAlign: 'center',
+                marginTop: 10,
+                fontSize: 26,
+                color: 'white',
+                fontWeight: 'bold',
+              }}
+            >
+              Start Workout
+            </Text>
+          </TouchableOpacity>
         </View>
       )}
     </View>
@@ -92,6 +860,9 @@ const Workouts = () => {
 };
 
 export default Workouts;
+
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -130,15 +901,13 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     tintColor: 'white',
   },
-  scrollview: {
-    marginTop: -50,
-  },
+  
   card1: {
     width: 350,
     height: 130,
     backgroundColor: 'gray',
     borderRadius: 10,
-    marginTop: 100,
+    marginTop: 10,
     alignSelf: 'center',
     overflow: 'hidden',
   },
@@ -182,7 +951,7 @@ const styles = StyleSheet.create({
   },
   text1: {
     position: 'absolute',
-    top: '30%',
+    top: '20%',
     left: '30%',
     transform: [{ translateX: -75 }, { translateY: -15 }],
     color: 'yellow',
@@ -192,7 +961,7 @@ const styles = StyleSheet.create({
   },
   text2: {
     position: 'absolute',
-    top: '60%',
+    top: '55%',
     left: '30%',
     padding: 3,
     borderRadius: 10,
@@ -202,6 +971,22 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     backgroundColor: '#222',
     textAlign: 'center',
+  },
+  text3:{
+
+     position: 'absolute',
+    top: '85%',
+    left: '30%',
+    padding: 2,
+    
+    borderRadius: 10,
+    transform: [{ translateX: -75 }, { translateY: -15 }],
+    color: 'black',
+    fontSize: 18,
+    fontWeight: 'bold',
+    backgroundColor: '#ffffffff',
+    textAlign: 'center',
+
   },
   btnstart: {
     position: 'absolute',
@@ -238,13 +1023,84 @@ btnback:{
   marginTop:35,
   marginLeft:20
 },
-train1:{
-   width:350,
-   height:100,
-   backgroundColor:'gray',
-   borderRadius:10,
-   alignSelf:'center',
-   marginBottom:20,
-   marginTop:20
-}
+train1: {
+    flexDirection: 'row',  
+    alignItems: 'center',
+    margin: 10,
+    height:80,
+    backgroundColor: 'black',
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  cardtitle:{
+    fontWeight:'bold',
+    fontSize:25,
+    textAlign:'center'
+
+  },
+
+  textCard: {
+   
+    width:200,
+    height: 70,           // smaller fixed height
+  padding: 10,
+
+  justifyContent: 'center',
+  backgroundColor:'#b3a1bcff',
+  borderTopLeftRadius:10,
+  borderBottomLeftRadius:10
+  },
+  text: {
+    fontSize: 15,
+    color:'blue',
+    textAlign:'center',
+   
+  },
+  scrollview: {
+    flex: 1,   
+    marginTop:50
+  
+    
+  },
+  scrollContent: {
+    paddingVertical: -40,
+  
+  },
+  btnstartt:{
+     height: 100,
+     width:'80%',
+     borderRadius:20,
+  backgroundColor: 'rgba(71, 126, 63, 1)',
+  position:'absolute',
+  alignSelf:'center',
+ 
+  bottom:15
+  },
+  textCard2:{
+     width:200,
+    height: 70,           // smaller fixed height
+  padding: 10,
+  },
+  cardtitle2:{
+    fontWeight:'bold',
+    fontSize:25,
+    textAlign:'center'
+  },
+  modalContainer:{
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  
+    height:4,
+    backgroundColor: 'rgba(0,0,0,0.5)', 
+  },
+  video:{
+ 
+    width: '100%',                     // Full width within padding
+    maxWidth: 400,                    // Max width for larger screens
+    height: 215,                     // 16:9 aspect ratio height (400 * 9/16)
+    borderRadius: 10,                // Rounded corners for better UI
+          // Black background behind video if no content
+  },
+  
 });
