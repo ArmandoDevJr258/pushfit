@@ -17,6 +17,14 @@ const [modalVisible4, setModalVisible4] = useState(false);
 const [modalVisible5, setModalVisible5] = useState(false);
 const [modalVisible6, setModalVisible6] = useState(false);
 const [modalVisible7, setModalVisible7] = useState(false);
+
+const [modalVisible11, setModalVisible11] = useState(false);
+const [modalVisible12, setModalVisible12] = useState(false);
+const [modalVisible13, setModalVisible13] = useState(false);
+const [modalVisible14, setModalVisible14] = useState(false);
+const [modalVisible15, setModalVisible15] = useState(false);
+const [modalVisible16, setModalVisible16] = useState(false);
+const [modalVisible17, setModalVisible17] = useState(false);
   const video = useRef(null);
   const videoSource = require('../../assets/images/pushups.mp4');
    const videoSource2 = require('../../assets/images/skullcrushers.mp4');
@@ -75,6 +83,39 @@ const videoRef = useRef(null);
   setPlaying(true);
 };
 
+ const openModal11 = () => {
+  setModalVisible11(true);
+  setPlaying(true);
+};
+  const openModal12 = () => {
+  setModalVisible12(true);
+  setPlaying(true);
+};
+
+  const openModal13 = () => {
+  setModalVisible13(true);
+  setPlaying(true);
+};
+
+  const openModal14 = () => {
+  setModalVisible14(true);
+  setPlaying(true);
+};
+
+  const openModal15 = () => {
+  setModalVisible15(true);
+  setPlaying(true);
+};
+
+  const openModal16 = () => {
+  setModalVisible16(true);
+  setPlaying(true);
+};
+  const openModal17 = () => {
+  setModalVisible17(true);
+  setPlaying(true);
+};
+
 
 
    const closeModal = () => {
@@ -116,6 +157,47 @@ const videoRef = useRef(null);
     // Pause the video when closing modal
    
     setModalVisible7(false);
+  };
+
+     const closeModal11 = () => {
+    // Pause the video when closing modal
+   
+    setModalVisible11(false);
+  };
+  
+   const closeModal12 = () => {
+    // Pause the video when closing modal
+   
+    setModalVisible12(false);
+  };
+   const closeModal13 = () => {
+    // Pause the video when closing modal
+   
+    setModalVisible13(false);
+  };
+
+   const closeModal14 = () => {
+    // Pause the video when closing modal
+   
+    setModalVisible14(false);
+  };
+
+   const closeModal15 = () => {
+    // Pause the video when closing modal
+   
+    setModalVisible15(false);
+  };
+
+   const closeModal16 = () => {
+    // Pause the video when closing modal
+   
+    setModalVisible16(false);
+  };
+  
+   const closeModal17 = () => {
+    // Pause the video when closing modal
+   
+    setModalVisible17(false);
   };
   const player = useVideoPlayer(
     require('../../assets/images/pushups.mp4'),
@@ -248,6 +330,86 @@ const videoRef = useRef(null);
           <Button title="Close" onPress={closeModal7} />
         </View>
       </Modal>
+
+      
+          <Modal visible={modalVisible11} animationType="slide" onRequestClose={closeModal} transparent={true}>
+        <View style={styles.modalContainer}>
+          <Video
+        source={require('../../assets/images/chestpushups.mp4')}
+        rate={1.0}
+        volume={1.0}
+        isMuted={false}
+        shouldPlay
+         resizeMode="contain" 
+        style={{ width: 300, height: 200 }}
+        useNativeControls
+      />
+          <Button title="Close" onPress={closeModal11} />
+        </View>
+      </Modal>
+
+       <Modal visible={modalVisible12} animationType="slide" onRequestClose={closeModal} transparent={true}>
+        <View style={styles.modalContainer}>
+          <Video
+        source={require('../../assets/images/chestdiamondpushups.mp4')}
+        rate={1.0}
+        volume={1.0}
+        isMuted={false}
+        shouldPlay
+         resizeMode="contain" 
+        style={{ width: 300, height: 200 }}
+        useNativeControls
+      />
+          <Button title="Close" onPress={closeModal12} />
+        </View>
+      </Modal>
+       <Modal visible={modalVisible13} animationType="slide" onRequestClose={closeModal} transparent={true}>
+        <View style={styles.modalContainer}>
+          <Video
+        source={require('../../assets/images/chest1.mp4')}
+        rate={1.0}
+        volume={1.0}
+        isMuted={false}
+        shouldPlay
+         resizeMode="contain" 
+        style={{ width: 300, height: 200 }}
+        useNativeControls
+      />
+          <Button title="Close" onPress={closeModal13} />
+        </View>
+      </Modal>
+
+       <Modal visible={modalVisible14} animationType="slide" onRequestClose={closeModal} transparent={true}>
+        <View style={styles.modalContainer}>
+          <Video
+        source={require('../../assets/images/chest2.mp4')}
+        rate={1.0}
+        volume={1.0}
+        isMuted={false}
+        shouldPlay
+         resizeMode="contain" 
+        style={{ width: 300, height: 200 }}
+        useNativeControls
+      />
+          <Button title="Close" onPress={closeModal14} />
+        </View>
+      </Modal>
+       
+        <Modal visible={modalVisible15} animationType="slide" onRequestClose={closeModal} transparent={true}>
+        <View style={styles.modalContainer}>
+          <Video
+        source={require('../../assets/images/chest2.mp4')}
+        rate={1.0}
+        volume={1.0}
+        isMuted={false}
+        shouldPlay
+         resizeMode="contain" 
+        style={{ width: 300, height: 200 }}
+        useNativeControls
+      />
+          <Button title="Close" onPress={closeModal15} />
+        </View>
+      </Modal>
        
        
        
@@ -313,17 +475,55 @@ const videoRef = useRef(null);
 
       {visible && (
         <View style={styles.fakeScreen}>
-          <TouchableOpacity style={styles.btnback} onPress={() => setVisible(false)}>
-            <Image
-              source={require('../../assets/images/arrow.png')}
-              style={styles.icon}
-            />
-          </TouchableOpacity>
-          <Text style={styles.p3}>Arms Workout</Text>
+          
+        <View style={{ height:150 }}>
+  {/* Background Image */}
+  <Image
+    source={require('../../assets/images/armsback1.png')}
+    style={{
+      position: 'absolute',
+      top: 25,
+      width:'100%',
+      height: 150,
+      zIndex: 0, // stays behind
+    }}
+    resizeMode="cover"
+  />
+
+  {/* Button */}
+  <TouchableOpacity
+    style={[styles.btnback, { position: 'absolute', top: 60, left: 20, zIndex: 10 }]}
+    onPress={() => setVisible(false)}
+  >
+    <Image
+      source={require('../../assets/images/arrow.png')}
+      style={styles.icon}
+    />
+  </TouchableOpacity>
+
+  {/* Title Text */}
+  <Text
+    style={{
+      position: 'absolute',
+      top: 30,
+      left: 120,
+      fontSize: 24,
+      textAlign:'center',
+      fontWeight: 'bold',
+      color: 'yellow',
+      zIndex: 10,
+    }}
+  >
+    Arms Workout
+  </Text>
+
+
+</View>
+
 
           <ScrollView
             style={{ flex: 1 }}
-            contentContainerStyle={{ paddingBottom: 20 }}
+            contentContainerStyle={{ paddingBottom: 120 }}
             showsVerticalScrollIndicator={true}
           >
       
@@ -459,21 +659,59 @@ const videoRef = useRef(null);
 
         {visible2 && (
         <View style={styles.fakeScreen}>
-          <TouchableOpacity style={styles.btnback} onPress={() => setVisible2(false)}>
-            <Image
-              source={require('../../assets/images/arrow.png')}
-              style={styles.icon}
-            />
-          </TouchableOpacity>
-          <Text style={styles.p3}>Chest Workout</Text>
+             
+        <View style={{ height:150 }}>
+  {/* Background Image */}
+  <Image
+    source={require('../../assets/images/chestback3.png')}
+    style={{
+      position: 'absolute',
+      top: 25,
+      width:'100%',
+      height: 150,
+      zIndex: 0, // stays behind
+    }}
+    resizeMode="cover"
+  />
+
+  {/* Button */}
+  <TouchableOpacity
+    style={[styles.btnback, { position: 'absolute', top: 60, left: 20, zIndex: 10 }]}
+    onPress={() => setVisible2(false)}
+  >
+    <Image
+      source={require('../../assets/images/arrow.png')}
+      style={styles.icon}
+    />
+  </TouchableOpacity>
+
+  {/* Title Text */}
+  <Text
+    style={{
+      position: 'absolute',
+      top: 30,
+      left: 120,
+      fontSize: 24,
+      textAlign:'center',
+      fontWeight: 'bold',
+      color: 'yellow',
+      zIndex: 10,
+    }}
+  >
+    Chest Workout
+  </Text>
+
+
+</View>
 
           <ScrollView
             style={{ flex: 1 }}
-            contentContainerStyle={{ paddingBottom: 20 }}
+            contentContainerStyle={{paddingBottom: 120 }}
             showsVerticalScrollIndicator={true}
+            
           >
        {!playing ? (
-  <TouchableOpacity onPress={openModal}>
+  <TouchableOpacity onPress={openModal11}>
     <View style={styles.train1}>
       <View style={styles.textCard}>
         <Text style={styles.cardtitle}>Push ups</Text>
@@ -492,6 +730,7 @@ const videoRef = useRef(null);
 
 
 
+<TouchableOpacity onPress={openModal12}>
             <View style={styles.train1}>
               <View style={styles.textCard}>
                 <Text style={styles.cardtitle}>Push ups</Text>
@@ -504,20 +743,24 @@ const videoRef = useRef(null);
                 style={{ width: 180, height: 100 }}
               />
             </View>
+</TouchableOpacity>
 
+<TouchableOpacity onPress={openModal12}>
             <View style={styles.train1}>
               <View style={styles.textCard}>
                 <Text style={styles.cardtitle}>Push ups</Text>
                 <Text style={styles.text}>9 exercises</Text>
                 <Text style={styles.text}>40 seconds</Text>
               </View>
-
               <Image
                 source={require('../../assets/images/Screenshot_20250812_190134_Files by Google.jpg')}
                 style={{ width: 180, height: 100 }}
               />
             </View>
+        
+</TouchableOpacity>
 
+<TouchableOpacity onPress={openModal13}>
             <View style={styles.train1}>
               <View style={styles.textCard}>
                 <Text style={styles.cardtitle}>Push ups</Text>
@@ -530,7 +773,9 @@ const videoRef = useRef(null);
                 style={{ width: 180, height: 100 }}
               />
             </View>
+</TouchableOpacity>
 
+<TouchableOpacity onPress={openModal14}>
             <View style={styles.train1}>
               <View style={styles.textCard}>
                 <Text style={styles.cardtitle}>Push ups</Text>
@@ -543,7 +788,9 @@ const videoRef = useRef(null);
                 style={{ width: 180, height: 100 }}
               />
             </View>
+</TouchableOpacity>
 
+<TouchableOpacity onPress={openModal15}>
             <View style={styles.train1}>
               <View style={styles.textCard}>
                 <Text style={styles.cardtitle}>Push ups</Text>
@@ -556,7 +803,9 @@ const videoRef = useRef(null);
                 style={{ width: 180, height: 100 }}
               />
             </View>
+</TouchableOpacity>
 
+<TouchableOpacity onPress={openModal16}>
             <View style={styles.train1}>
               <View style={styles.textCard}>
                 <Text style={styles.cardtitle}>Push ups</Text>
@@ -568,7 +817,7 @@ const videoRef = useRef(null);
                 source={require('../../assets/images/Screenshot_20250812_190158_Files by Google.jpg')}
                 style={{ width: 180, height: 100 }}
               />
-            </View>
+            </View></TouchableOpacity>
           </ScrollView>
 
           <TouchableOpacity
@@ -592,17 +841,52 @@ const videoRef = useRef(null);
 
         {visible3 && (
         <View style={styles.fakeScreen}>
-          <TouchableOpacity style={styles.btnback} onPress={() => setVisible3(false)}>
-            <Image
-              source={require('../../assets/images/arrow.png')}
-              style={styles.icon}
-            />
-          </TouchableOpacity>
-          <Text style={styles.p3}>Arbs Workout</Text>
+            <View style={{ height:150 }}>
+  {/* Background Image */}
+  <Image
+    source={require('../../assets/images/armsback1.png')}
+    style={{
+      position: 'absolute',
+      top: 25,
+      width:'100%',
+      height: 150,
+      zIndex: 0, // stays behind
+    }}
+    resizeMode="cover"
+  />
 
+  {/* Button */}
+  <TouchableOpacity
+    style={[styles.btnback, { position: 'absolute', top: 60, left: 20, zIndex: 10 }]}
+    onPress={() => setVisible3(false)}
+  >
+    <Image
+      source={require('../../assets/images/arrow.png')}
+      style={styles.icon}
+    />
+  </TouchableOpacity>
+
+  {/* Title Text */}
+  <Text
+    style={{
+      position: 'absolute',
+      top: 30,
+      left: 120,
+      fontSize: 24,
+      textAlign:'center',
+      fontWeight: 'bold',
+      color: 'yellow',
+      zIndex: 10,
+    }}
+  >
+    Arbs Workout
+  </Text>
+
+
+</View>
           <ScrollView
             style={{ flex: 1 }}
-            contentContainerStyle={{ paddingBottom: 20 }}
+            contentContainerStyle={{ paddingBottom: 120 }}
             showsVerticalScrollIndicator={true}
           >
        {!playing ? (
@@ -725,17 +1009,53 @@ const videoRef = useRef(null);
 
         {visible4 && (
         <View style={styles.fakeScreen}>
-          <TouchableOpacity style={styles.btnback} onPress={() => setVisible4(false)}>
-            <Image
-              source={require('../../assets/images/arrow.png')}
-              style={styles.icon}
-            />
-          </TouchableOpacity>
-          <Text style={styles.p3}>Legs Workout</Text>
+             <View style={{ height:150 }}>
+  {/* Background Image */}
+  <Image
+    source={require('../../assets/images/armsback1.png')}
+    style={{
+      position: 'absolute',
+      top: 25,
+      width:'100%',
+      height: 150,
+      zIndex: 0, // stays behind
+    }}
+    resizeMode="cover"
+  />
+
+  {/* Button */}
+  <TouchableOpacity
+    style={[styles.btnback, { position: 'absolute', top: 60, left: 20, zIndex: 10 }]}
+    onPress={() => setVisible4(false)}
+  >
+    <Image
+      source={require('../../assets/images/arrow.png')}
+      style={styles.icon}
+    />
+  </TouchableOpacity>
+
+  {/* Title Text */}
+  <Text
+    style={{
+      position: 'absolute',
+      top: 30,
+      left: 120,
+      fontSize: 24,
+      textAlign:'center',
+      fontWeight: 'bold',
+      color: 'yellow',
+      zIndex: 10,
+    }}
+  >
+    Legs Workout
+  </Text>
+
+
+</View>
 
           <ScrollView
             style={{ flex: 1 }}
-            contentContainerStyle={{ paddingBottom: 20 }}
+            contentContainerStyle={{ paddingBottom: 120 }}
             showsVerticalScrollIndicator={true}
           >
        {!playing ? (
@@ -1010,18 +1330,18 @@ const styles = StyleSheet.create({
     zIndex: 9999,
   },
   p3: {
+    position:'absolute',
     color: '#FFD700',
     fontSize: 28,
     fontWeight: 'bold',
-    marginTop:-20,
+    top:30,
     marginLeft:100
   },
 btnback:{
   width:30,
   height:30,
-  backgroundColor:'black',
-  marginTop:35,
-  marginLeft:20
+  marginTop:-25,
+  marginLeft:5
 },
 train1: {
     flexDirection: 'row',  
@@ -1031,6 +1351,8 @@ train1: {
     backgroundColor: 'black',
     borderRadius: 10,
     overflow: 'hidden',
+
+  
   },
   cardtitle:{
     fontWeight:'bold',

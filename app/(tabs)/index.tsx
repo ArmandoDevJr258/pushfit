@@ -49,29 +49,17 @@ export default function HomeScreen() {
         {/* Welcome */}
         <Text style={styles.welcome}>Welcome back! Let's crush your goals 💥</Text>
 
-        {/* Recommended Workouts */}
-        <Text style={styles.sectionTitle}>Recommended Plans</Text>
-        <FlatList
-          data={workouts}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item.id}
-          contentContainerStyle={styles.workoutList}
-          renderItem={({ item }) => (
-            <TouchableOpacity style={styles.workoutCard} onPress={() => handleStartWorkout(item.title)}>
-              <Text style={styles.workoutTitle}>{item.title}</Text>
-              <Text style={styles.workoutDuration}>{item.duration}</Text>
-            </TouchableOpacity>
-          )}
-        />
+     
+       <View style={styles.calendar}>
 
-        {/* Quick Start Workout */}
-        <View style={styles.quickStart}>
-          <Text style={styles.quickTitle}>Start your next workout</Text>
-          <TouchableOpacity style={styles.startBtn} onPress={() => handleStartWorkout('Quick Full Body')}>
-            <Text style={styles.startBtnText}>Start Now</Text>
-          </TouchableOpacity>
-        </View>
+       </View>
+       <Text style={{marginTop:200}}>Explore Workout plans</Text>
+       <View style={styles.plans}>
+
+       </View>
+      
+
+       
 
         {/* Settings Overlay */}
         {visible && (
@@ -217,4 +205,23 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: 'white',
   },
+  calendar:{
+    position:'absolute',
+    top:100,
+    alignSelf:'center',
+    width:340,
+    height:100,
+    backgroundColor:'gray',
+    borderRadius:10
+  },
+   plans:{
+    position:'absolute',
+    top:300,
+    alignSelf:'center',
+    width:340,
+    height:200,
+    backgroundColor:'gray',
+    borderRadius:10
+  }
+
 });
